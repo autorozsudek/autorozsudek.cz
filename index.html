@@ -1,105 +1,55 @@
-<!doctype html>
-<html lang="cs">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>AutoRozsudek.cz | Kontrola ojetého vozu před koupí</title>
-  <meta name="description" content="Nezávislá kontrola ojetého vozu před koupí. Kontrola s klientem i na dálku, fotodokumentace, hodnocení a jasný verdikt.">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<header class="topbar">
-  <a class="brand" href="#home"><span class="mark">AR</span><span>AUTO<b>ROZSUDEK</b><small>Prověříme. Posoudíme. Poradíme.</small></span></a>
-  <button class="menu" aria-label="Otevřít menu">☰</button>
-  <nav>
-    <a href="#jak">Jak to funguje</a><a href="#sluzby">Typ kontroly</a><a href="#kontrola">Co kontroluji</a>
-    <a href="#protokol">Protokol</a><a href="#faq">FAQ</a><a class="cta small" href="#kontakt">Objednat kontrolu</a>
-  </nav>
-</header>
+<!doctype html><html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AutoRozsudek.cz — Nekupujte auto naslepo</title><meta name="description" content="Nezávislá kontrola ojetých vozů před koupí. Diagnostika, fotodokumentace a jasný rozsudek."><link rel="stylesheet" href="style.css"></head><body>
+<header class="topbar"><div class="container nav"><a class="logo" href="#top" aria-label="AutoRozsudek.cz"><img src="assets/logo-autorozsudek-approved.png" alt="AutoRozsudek.cz – Pravda má hodnotu"></a><nav><a href="#top">Domů</a><a href="#jak">Jak to funguje</a><a href="#kontrolujeme">Co kontrolujeme</a><a href="#proc">Proč kontrola</a><a href="#reference">Reference</a><a href="#onas">O nás</a><a href="#kontakt">Kontakt</a></nav><a class="btn small" href="#kontakt">Objednat kontrolu</a></div></header>
+<main id="top"><section class="hero"><div class="container hero-grid"><div><p class="eyebrow">NEZÁVISLÁ KONTROLA OJETÝCH VOZŮ</p><h1>NEKUPUJTE AUTO<br><span>NASLEPO.</span></h1><h2>Nechte nad ním vynést <strong>rozsudek.</strong></h2><p class="lead">Prověříme ojetý vůz před koupí a řekneme vám, co prodávající možná neřekl. Nezávisle. Objektivně. Srozumitelně.</p><div class="actions"><a class="btn" href="#kontakt">Chci prověřit auto →</a><a class="btn outline" href="#jak">Jak kontrola probíhá</a></div><div class="benefits"><div><b>Nezávisle</b><span>bez vazby na prodejce</span></div><div><b>Srozumitelně</b><span>jasný výstup z kontroly</span></div><div><b>České Budějovice a okolí</b><span>přijedeme za vozem</span></div></div></div><div class="hero-photo"><img src="assets/hero-final.jpg" alt="Technik při kontrole vozu"><div class="handwritten">Lepší znát pravdu<br>než litovat nákupu.</div></div></div></section>
+<section id="kontrolujeme" class="dark"><div class="container"><div class="head"><div><p class="eyebrow">DETAILNÍ PROVĚŘENÍ DŮLEŽITÝCH ČÁSTÍ</p><h2>CO KONTROLUJEME?</h2><p class="sub">Protože hezké fotografie v inzerátu nestačí.</p></div><p class="intro">Každý vůz kontrolujeme systematicky. Neřešíme jen vzhled — hledáme věci, které mohou zásadně ovlivnit cenu, bezpečnost i budoucí servis.</p></div><div class="map"><div class="car-zone"><img src="assets/superb4.png" alt="Škoda Superb 4. generace"><div class="car-fallback">SUPERB IV<br><small>sem vložíme finální reálný vůz</small></div><svg class="lines" viewBox="0 0 1000 520" preserveAspectRatio="none"><polyline points="210,100 330,100 420,170"/><polyline points="210,235 330,235 405,230"/><polyline points="210,370 330,370 410,305"/><polyline points="790,100 690,100 610,170"/><polyline points="790,235 700,235 645,245"/><polyline points="790,370 690,370 625,330"/><polyline points="500,500 500,430 520,355"/></svg><button class="dot d1" data-id="lak"></button><button class="dot d2" data-id="motor"></button><button class="dot d3" data-id="diag"></button><button class="dot d4" data-id="interier"></button><button class="dot d5" data-id="jizda"></button><button class="dot d6" data-id="pneu"></button><button class="dot d7" data-id="podvozek"></button></div>
+<article id="lak" class="card left c1"><b>Karoserie a lak</b><span>Měření tloušťky laku, spáry, koroze, stopy oprav a stav skel.</span></article><article id="motor" class="card left c2"><b>Motor a převodovka</b><span>Úniky, zvuky, startování, chod motoru a převodovky.</span></article><article id="diag" class="card left c3"><b>Diagnostika</b><span>Chybové kódy, řídicí jednotky a dostupné informace o závadách.</span></article><article id="interier" class="card right c4"><b>Interiér a výbava</b><span>Funkčnost výbavy, klimatizace, ovládací prvky a opotřebení.</span></article><article id="jizda" class="card right c5"><b>Zkušební jízda</b><span>Motor, převodovka, brzdy, řízení, vibrace a hluk.</span></article><article id="pneu" class="card right c6"><b>Pneumatiky a kola</b><span>Stav pneumatik, disků, dezénu a viditelné závady.</span></article><article id="podvozek" class="card bottom"><b>Podvozek a brzdy</b><span>Vůle, úniky, tlumiče, pružiny, brzdy a viditelné poškození.</span></article></div><p class="note">Body, čáry a popisy jsou samostatná vrstva. Po vložení finální fotografie Superbu je můžeme přesně doladit na konkrétní díly.</p></div></section>
+<section id="proc" class="light"><div class="container why"><div><p class="eyebrow">PROČ NECHAT AUTO ZKONTROLOVAT?</p><h2>JEDNO ŠPATNÉ AUTO<br>MŮŽE STÁT <span>STATISÍCE.</span></h2><p>Cílem není auto za každou cenu shodit. Cílem je, abyste přesně věděli, co kupujete.</p></div><div class="risk">
+<article><i>🚗</i><b>Skrytá nehoda</b><span>Opravy nebo poškození, které nejsou v inzerátu přiznané.</span></article>
+<article><i>🔧</i><b>Blížící se drahý servis</b><span>Opotřebení, které může krátce po koupi znamenat vysoké náklady.</span></article>
+<article><i>⚙</i><b>Problémy v diagnostice</b><span>Elektronické závady a chybové kódy, které nejsou vidět.</span></article>
+<article><i>📋</i><b>Nesoulad s inzerátem</b><span>Výbava nebo stav nemusí odpovídat nabídce.</span></article>
+</div></div></section>
+<section id="jak" class="steps-sec"><div class="container"><p class="eyebrow">JAK U NÁS PROBÍHÁ KONTROLA?</p><h2>OD OBJEDNÁVKY<br>K <span>ROZSUDKU.</span></h2><div class="steps"><article><em>1</em><b>Objednávka</b><span>Pošlete odkaz na vůz a základní informace.</span></article><article><em>2</em><b>Kontrola vozu</b><span>Prověříme technický i vizuální stav auta.</span></article><article><em>3</em><b>Přehledný report</b><span>Fotografie, nálezy, komentář a hodnocení.</span></article><article><em>4</em><b>Rozsudek</b><span>Doporučujeme / s výhradami / nedoporučujeme.</span></article></div></div></section>
+<section id="report" class="light"><div class="container report"><div><p class="eyebrow">CO DOSTANETE?</p><h2>PŘEHLEDNÝ REPORT<br>A JASNÝ <span>ROZSUDEK.</span></h2><p>Nejen „dobré / špatné“. Dostanete konkrétní nálezy, fotografie a srozumitelný závěr.</p></div><div class="verdicts"><div class="verdict good"><b>DOPORUČUJEME</b><span>Vůz bez zásadních problémů.</span></div><div class="verdict warn"><b>DOPORUČUJEME S VÝHRADAMI</b><span>Nedostatky je vhodné započítat do ceny.</span></div><div class="verdict bad"><b>NEDOPORUČUJEME</b><span>Rizika nebo stav vozu nedávají smysl vzhledem ke koupi.</span></div></div></div></section>
 
-<main id="home">
-<section class="hero">
-  <div class="hero-copy">
-    <p class="eyebrow">NEZÁVISLÁ KONTROLA OJETÝCH VOZŮ</p>
-    <h1>Nekupujte auto <em>naslepo.</em></h1>
-    <p class="lead">Prověřím skutečný stav ojetého vozu ještě předtím, než za něj zaplatíte. Bez vazby na prodejce, srozumitelně a s jasným závěrem.</p>
-    <div class="hero-points"><span>✓ Fyzická kontrola</span><span>✓ Diagnostika</span><span>✓ Fotodokumentace</span><span>✓ Jasný verdikt</span></div>
-    <div class="actions"><a class="cta" href="#kontakt">Objednat kontrolu</a><a class="ghost" href="#jak">Jak kontrola probíhá</a></div>
-  </div>
-  <div class="photo-placeholder">
-    <strong>SEM PŘIJDE SKUTEČNÁ FOTOGRAFIE Z KONTROLY</strong>
-    <span>např. kontrola motorového prostoru skutečného vozu</span>
+<section id="reference" class="references-sec">
+  <div class="container">
+    <div class="section-heading">
+      <div><p class="eyebrow">ZKUŠENOST ZÁKAZNÍKŮ</p><h2>REFERENCE</h2></div>
+      <p>Reference doplníme po spuštění služby. Už teď je pro ně na webu připravené místo tak, aby později působily přirozeně a důvěryhodně.</p>
+    </div>
+    <div class="references-grid">
+      <article class="reference-card placeholder-review"><div class="stars">★★★★★</div><p>„Sem přijde skutečná zkušenost zákazníka s kontrolou vozu.“</p><b>Budoucí zákazník</b></article>
+      <article class="reference-card placeholder-review"><div class="stars">★★★★★</div><p>„Reference nebudeme vymýšlet. Po spuštění sem vložíme pouze ověřené recenze.“</p><b>AutoRozsudek.cz</b></article>
+      <article class="reference-card placeholder-review"><div class="stars">★★★★★</div><p>„Cílem je ukázat reálný přínos kontroly před koupí konkrétního auta.“</p><b>Budoucí zákazník</b></article>
+    </div>
   </div>
 </section>
 
-<section id="jak" class="section">
-  <div class="section-head"><p class="eyebrow">OD OBJEDNÁVKY K VERDIKTU</p><h2>Jak probíhá kontrola</h2></div>
-  <div class="steps">
-    <article><b>01</b><h3>Domluvíme termín</h3><p>Pošlete údaje nebo odkaz na vůz a zvolíte způsob kontroly.</p></article>
-    <article><b>02</b><h3>Prověřím vůz</h3><p>Exteriér, interiér, technika, dokumenty, diagnostika a testovací jízda dle možností.</p></article>
-    <article><b>03</b><h3>Zpracuji protokol</h3><p>Nálezy doplním fotografiemi, komentářem, hodnocením a doporučením.</p></article>
-    <article><b>04</b><h3>Dostanete rozsudek</h3><p>Výsledek obdržíte přehledně a budete vědět, do čeho jdete.</p></article>
+<section id="onas" class="about-sec">
+  <div class="container about-grid">
+    <div class="about-copy">
+      <p class="eyebrow">KDO ZA TÍM STOJÍ?</p>
+      <h2>AUTO NEPOSUZUJEME<br>PODLE <span>PRVNÍHO DOJMU.</span></h2>
+      <p>AutoRozsudek.cz vzniká s jednoduchým cílem: dát kupujícímu před koupí co nejjasnější obraz o skutečném stavu vozu. Bez vazby na prodávajícího a bez tlaku auto za každou cenu koupit.</p>
+      <p>Kontrola má pomoci rozhodnout se s chladnou hlavou — ať už výsledkem bude koupit, vyjednávat o ceně, nebo od vozu odejít.</p>
+    </div>
+    <div class="about-points">
+      <div><strong>01</strong><b>Nezávislý pohled</b><span>Naším klientem je kupující, ne prodejce vozu.</span></div>
+      <div><strong>02</strong><b>Srozumitelný závěr</b><span>Technické nálezy přeložíme do normální lidské řeči.</span></div>
+      <div><strong>03</strong><b>Lokální služba</b><span>České Budějovice a okolí — bez předstírání celorepublikového pokrytí.</span></div>
+    </div>
   </div>
 </section>
 
-<section id="sluzby" class="section alt">
-  <div class="section-head"><p class="eyebrow">DVĚ MOŽNOSTI</p><h2>Vyberte si způsob kontroly</h2></div>
-  <div class="service-grid">
-    <article class="service"><span class="number">01</span><h3>Kontrola s klientem</h3>
-      <p>U kontroly jste osobně a jednotlivé nálezy vám vysvětlím přímo na místě.</p>
-      <ul><li>Vůz vidíte na vlastní oči</li><li>Průběžné vysvětlení nálezů</li><li>Možnost okamžitě se doptat</li><li>Závěrečné doporučení</li></ul>
-      <a href="#kontakt">Chci být u kontroly →</a>
-    </article>
-    <article class="service featured"><span class="number">02</span><h3>Kontrola na dálku</h3>
-      <p>Nemusíte nikam jezdit. Vůz prověřím bez vaší přítomnosti a vše detailně zdokumentuji.</p>
-      <ul><li>Fotografie exteriéru i interiéru</li><li>Komentované nálezy</li><li>Hodnocení jednotlivých oblastí</li><li>Digitální protokol a verdikt</li></ul>
-      <a href="#kontakt">Chci kontrolu na dálku →</a>
-    </article>
+<section class="faq-sec">
+  <div class="container faq-wrap">
+    <div><p class="eyebrow">ČASTÉ DOTAZY</p><h2>NEŽ SE<br>ROZHODNETE.</h2></div>
+    <div class="faq-list">
+      <details open><summary>Musím být u kontroly osobně?</summary><p>Nemusíte. Finální podobu služby nastavíme tak, aby bylo možné kontrolu provést i bez vaší osobní účasti a následně vám předat přehledný výstup.</p></details>
+      <details><summary>Co když auto kontrolou neprojde?</summary><p>Smyslem kontroly není vůz „shodit“. Dostanete nálezy a jasný závěr, podle kterého se můžete rozhodnout, zda koupit, vyjednávat, nebo od koupě ustoupit.</p></details>
+      <details><summary>Kde službu nabízíte?</summary><p>Primárně v Českých Budějovicích a okolí. Přesnou oblast dojezdu a případné cestovní podmínky doplníme před spuštěním.</p></details>
+    </div>
   </div>
 </section>
-
-<section id="kontrola" class="section">
- <div class="section-head"><p class="eyebrow">SYSTEMATICKÁ PROHLÍDKA</p><h2>Co kontroluji</h2><p>Kontrola vychází z detailního kontrolního postupu. Konkrétní rozsah se může lišit podle typu vozu a podmínek kontroly.</p></div>
- <div class="check-grid">
-  <article><h3>Karoserie a lak</h3><p>Lak a jeho tloušťka, slícování, promáčkliny, koroze, skla, světla, zrcátka a viditelné stopy oprav.</p></article>
-  <article><h3>Interiér a komfort</h3><p>Sedadla, čalounění, ovládací prvky, klimatizace, topení, okna, zámky, infotainment a další výbava.</p></article>
-  <article><h3>Kola, brzdy a pneu</h3><p>Disky, pneumatiky, hloubka dezénu, brzdy a vizuálně zjistitelné závady.</p></article>
-  <article><h3>Podvozek</h3><p>Koroze, úniky, výfuk, tlumiče, pružiny, uložení, vůle a další viditelné poškození.</p></article>
-  <article><h3>Motor a převodovka</h3><p>Provozní kapaliny, úniky, startování, kouřivost, chod motoru, zvuky, kabeláž a dostupné části motorového prostoru.</p></article>
-  <article><h3>Testovací jízda</h3><p>Motor, převodovka, spojka, podvozek, brzdy, řízení, vibrace, hluk a funkce dostupných asistentů.</p></article>
-  <article><h3>Diagnostika</h3><p>Připojení diagnostiky, komunikace s vozem a zaznamenání dostupných chybových hlášení.</p></article>
-  <article><h3>Dokumenty a historie</h3><p>VIN, dostupné doklady, servisní záznamy, počet klíčů, původ a další předložené informace.</p></article>
- </div>
-</section>
-
-<section id="protokol" class="section alt protocol">
- <div><p class="eyebrow">VÝSTUP PRO KLIENTA</p><h2>Nejen „dobré / špatné“.<br>Skutečný protokol.</h2>
- <p>Po kontrole vznikne přehledný výstup s fotografiemi, komentáři a hodnocením. U kontroly na dálku bude protokol hlavním způsobem, jak vám vůz ukázat do detailu.</p>
- <div class="verdicts"><span class="yes">DOPORUČUJI</span><span class="warn">DOPORUČUJI S VÝHRADAMI</span><span class="no">NEDOPORUČUJI</span></div>
- </div>
- <div class="report">
-  <div class="report-top"><div><small>AUTOROZSUDEK / PROTOKOL</small><h3>Kontrola vozu</h3></div><strong>7,8 / 10</strong></div>
-  <div class="ratings"><p>Exteriér <b>7 / 10</b></p><p>Interiér <b>8 / 10</b></p><p>Technický stav <b>8 / 10</b></p><p>Celkové hodnocení <b>7,8 / 10</b></p></div>
-  <div class="finding"><span>Fotografie nálezu</span><div><b>Karoserie – pravý bok</b><small>Ukázkový komentář technika k nálezu.</small></div></div>
-  <div class="finding"><span>Fotografie nálezu</span><div><b>Kolo – přední</b><small>Ukázkový komentář technika k nálezu.</small></div></div>
-  <p class="private-note">🔒 Budoucí klientský protokol: soukromý přístup + možnost PDF.</p>
- </div>
-</section>
-
-<section id="faq" class="section">
- <div class="section-head"><p class="eyebrow">ČASTÉ DOTAZY</p><h2>Co je dobré vědět</h2></div>
- <details><summary>Je možné objednat kontrolu bez mé přítomnosti?</summary><p>Ano. Právě pro tento případ je určena kontrola na dálku s podrobnou dokumentací a závěrečným protokolem.</p></details>
- <details><summary>Zaručí kontrola, že se na autě nikdy nic nepokazí?</summary><p>Ne. Kontrola hodnotí zjistitelný stav vozidla v době prohlídky. Není zárukou budoucí bezporuchovosti.</p></details>
- <details><summary>Dostanu fotografie a hodnocení?</summary><p>Ano. Cílem digitálního protokolu je spojit fotografie, komentáře, dílčí hodnocení a výsledný verdikt na jednom místě.</p></details>
-</section>
-
-<section id="kontakt" class="contact">
- <p class="eyebrow">PŘIPRAVUJEME SPUŠTĚNÍ</p><h2>Máte vyhlédnuté auto?</h2>
- <p>Objednávkový formulář a kontaktní údaje doplníme před spuštěním služby.</p>
- <a class="cta disabled" href="#" onclick="return false">Objednat kontrolu</a>
-</section>
-</main>
-
-<footer><div class="brand"><span class="mark">AR</span><span>AUTO<b>ROZSUDEK</b></span></div><p>© 2026 AutoRozsudek.cz · Připravovaná služba kontroly ojetých vozů.</p></footer>
-<script src="script.js"></script>
-</body></html>
+<section id="kontakt" class="cta"><div class="container cta-row"><div><p class="eyebrow">PŘIPRAVUJEME SPUŠTĚNÍ</p><h2>Máte vyhlédnuté auto?</h2><p>Objednávkový formulář, ceník a přesný rozsah dojezdu doplníme před ostrým spuštěním služby v Českých Budějovicích a okolí.</p></div><span class="btn disabled">Objednat kontrolu</span></div></section></main><footer><div class="container">© 2026 AutoRozsudek.cz</div></footer><script src="script.js"></script></body></html>
