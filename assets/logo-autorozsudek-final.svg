@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 92"
+  role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">AutoRozsudek.cz</title>
+  <desc id="logoDesc">PRAVDA MÁ HODNOTU</desc>
+
+  <!-- Clean AR symbol -->
+  <g transform="translate(4 7)">
+    <!-- A -->
+    <path fill="#FFFFFF" d="
+      M0 76
+      L31 3
+      H55
+      L84 76
+      H59
+      L50 54
+      H31
+      L22 76
+      Z
+      M38 36
+      H44
+      L41 29
+      Z"/>
+    <!-- small cross/opening detail to retain the angular AR character -->
+    <path fill="#FFFFFF" d="M12 35 H48 L38 52 H3 Z"/>
+
+    <!-- R: smooth, real vector curves -->
+    <path fill="#EF2337" d="
+      M58 3
+      H96
+      C116 3 128 14 128 31
+      C128 44 121 53 108 57
+      L130 76
+      H101
+      L82 58
+      H78
+      L78 76
+      H54
+      V41
+      H94
+      C101 41 105 37 105 31
+      C105 25 101 21 94 21
+      H72
+      Z"/>
+  </g>
+
+  <!-- Wordmark stays true vector text in the browser; no bitmap -->
+  <text x="145" y="48"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="30" font-weight="700"
+        fill="#FFFFFF">
+    Auto<tspan fill="#EF2337">Rozsudek</tspan><tspan fill="#FFFFFF" font-size="20">.cz</tspan>
+  </text>
+
+  <text x="147" y="72"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="10" font-weight="700"
+        letter-spacing="4.5"
+        fill="#FFFFFF">PRAVDA MÁ HODNOTU</text>
+</svg>
