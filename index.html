@@ -1,12 +1,203 @@
-<!doctype html><html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AutoRozsudek.cz — Nekupujte auto naslepo</title><meta name="description" content="Nezávislá kontrola ojetých vozů před koupí. Diagnostika, fotodokumentace a jasný rozsudek."><link rel="stylesheet" href="style.css"></head><body>
+<!doctype html><html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AutoRozsudek.cz — Nekupujte auto naslepo</title><meta name="description" content="Nezávislá kontrola ojetých vozů před koupí. Diagnostika, fotodokumentace a jasný rozsudek."><link rel="stylesheet" href="style.css">
+<style>
+/* ===== AutoRozsudek – ostrá sekce "Co kontrolujeme" ===== */
+.inspect-section{
+  background:#05080c;
+  color:#fff;
+  overflow:hidden;
+}
+.inspect-wrap{
+  width:min(1480px,96vw);
+  margin:0 auto;
+  min-height:calc(100svh - 86px);
+  padding:20px 0 18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  box-sizing:border-box;
+}
+.inspect-head{
+  text-align:center;
+  flex:0 0 auto;
+}
+.inspect-kicker{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  margin:0 0 7px;
+  color:#f01832;
+  font-weight:800;
+  font-size:clamp(12px,1.2vw,19px);
+  letter-spacing:.16em;
+}
+.inspect-kicker::before,.inspect-kicker::after{
+  content:"";
+  width:82px;
+  height:1px;
+  background:#f01832;
+  opacity:.8;
+}
+.inspect-title{
+  margin:0;
+  font-size:clamp(24px,2.5vw,39px);
+  line-height:1.12;
+  letter-spacing:-.035em;
+  font-weight:800;
+}
+.inspect-title strong{color:#f01832}
+.inspect-sub{
+  margin:8px 0 10px;
+  color:#aeb5c1;
+  font-size:clamp(13px,1.45vw,22px);
+  line-height:1.25;
+}
+.inspect-car{
+  position:relative;
+  width:100%;
+  margin:0 auto 10px;
+  flex:1 1 auto;
+  min-height:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.inspect-car img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:43svh;
+  object-fit:contain;
+}
+.hotspot{
+  position:absolute;
+  width:clamp(31px,3vw,46px);
+  aspect-ratio:1;
+  border-radius:50%;
+  background:#f01832;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-weight:900;
+  font-size:clamp(16px,1.65vw,25px);
+  line-height:1;
+  transform:translate(-50%,-50%);
+  z-index:3;
+  box-shadow:0 0 0 2px rgba(240,24,50,.08);
+}
+/* positions relative to the exact approved cropped car artwork */
+.hotspot.h1{left:45.1%;top:7.0%}
+.hotspot.h2{left:32.8%;top:46.0%}
+.hotspot.h3{left:13.4%;top:83.3%}
+.hotspot.h4{left:50.3%;top:96.0%}
+.hotspot.h5{left:72.5%;top:84.5%}
+.hotspot.h6{left:67.3%;top:49.0%}
+.hotspot.h7{left:83.0%;top:25.0%}
+
+.inspect-cards{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  flex:0 0 auto;
+}
+.inspect-card{
+  min-height:104px;
+  border:1px solid #262b32;
+  border-radius:13px;
+  background:linear-gradient(145deg,#090c10,#05070a);
+  padding:13px 15px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:10px 12px;
+  align-items:start;
+  box-sizing:border-box;
+}
+.inspect-card:nth-child(5){grid-column:1 / span 1}
+.inspect-card:nth-child(6){grid-column:2 / span 2}
+.inspect-card:nth-child(7){grid-column:4 / span 1}
+.inspect-num{
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  background:#f01832;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  font-size:18px;
+}
+.inspect-copy b{
+  display:block;
+  margin:1px 0 5px;
+  font-size:clamp(14px,1.15vw,19px);
+  line-height:1.1;
+}
+.inspect-copy p{
+  margin:0;
+  color:#c2c7cf;
+  font-size:clamp(11px,.9vw,14px);
+  line-height:1.38;
+}
+
+/* Desktop / notebook: force whole section into one viewport */
+@media (min-width:901px) and (max-height:850px){
+  .inspect-wrap{padding:12px 0 10px}
+  .inspect-sub{margin:5px 0 6px}
+  .inspect-car img{max-height:38svh}
+  .inspect-cards{gap:7px}
+  .inspect-card{min-height:86px;padding:9px 11px}
+  .inspect-num{width:29px;height:29px;font-size:15px}
+  .inspect-copy b{margin-bottom:3px}
+  .inspect-copy p{line-height:1.25}
+}
+
+/* Mobile version will be finalized later; this interim layout keeps it readable. */
+@media (max-width:900px){
+  .inspect-wrap{
+    min-height:auto;
+    width:min(94vw,760px);
+    padding:34px 0;
+  }
+  .inspect-title{font-size:clamp(25px,7vw,36px)}
+  .inspect-sub{font-size:15px;margin-bottom:18px}
+  .inspect-car img{max-height:none}
+  .inspect-cards{grid-template-columns:1fr}
+  .inspect-card:nth-child(n){grid-column:auto}
+  .inspect-card{min-height:auto}
+}
+</style>
+
+</head><body>
 <header class="topbar"><div class="container nav"><a class="logo" href="#top" aria-label="AutoRozsudek.cz"><img src="assets/logo-autorozsudek-approved-final.svg" width="315" height="62" alt="AutoRozsudek.cz – Pravda má hodnotu"></a><nav><a href="#top">Domů</a><a href="#jak">Jak to funguje</a><a href="#kontrolujeme">Co kontrolujeme</a><a href="#proc">Proč kontrola</a><a href="#reference">Reference</a><a href="#onas">O nás</a><a href="#kontakt">Kontakt</a></nav><a class="btn small" href="#kontakt">Objednat kontrolu</a></div></header>
 <main id="top"><section class="hero"><div class="container hero-grid"><div><p class="eyebrow">NEZÁVISLÁ KONTROLA OJETÝCH VOZŮ</p><h1>NEKUPUJTE AUTO<br><span>NASLEPO.</span></h1><h2>Nechte nad ním vynést <strong>rozsudek.</strong></h2><p class="lead">Prověříme ojetý vůz před koupí a řekneme vám, co prodávající možná neřekl. Nezávisle. Objektivně. Srozumitelně.</p><div class="actions"><a class="btn" href="#kontakt">Chci prověřit auto →</a><a class="btn outline" href="#jak">Jak kontrola probíhá</a></div><div class="benefits"><div><b>Nezávisle</b><span>bez vazby na prodejce</span></div><div><b>Srozumitelně</b><span>jasný výstup z kontroly</span></div><div><b>České Budějovice a okolí</b><span>přijedeme za vozem</span></div></div></div><div class="hero-photo"><img src="assets/hero-final.jpg" alt="Technik při kontrole vozu"><div class="handwritten">Lepší znát pravdu<br>než litovat nákupu.</div></div></div></section>
-<section id="kontrolujeme" class="dark">
-<div class="container" style="padding-top:48px;padding-bottom:48px">
-<img src="assets/co-kontrolujeme-final.png"
-     alt="Co kontrolujeme při prověření ojetého vozu"
-     style="display:block;width:100%;height:auto;border-radius:22px">
-</div>
+<section id="kontrolujeme" class="inspect-section">
+  <div class="inspect-wrap">
+    <div class="inspect-head">
+      <div class="inspect-kicker">CO KONTROLUJEME?</div>
+      <h2 class="inspect-title">Podrobně zkontrolujeme ojetý vůz ještě před nákupem, <strong>už do 24 hodin!</strong></h2>
+      <p class="inspect-sub">Prověříme vše podstatné, abyste věděli, co kupujete. Žádné zbytečné riziko.</p>
+    </div>
+
+    <div class="inspect-car">
+      <img src="assets/co-kontrolujeme-auto-final.png" alt="Škoda Superb při přednákupní kontrole">
+      <span class="hotspot h1">1</span>
+      <span class="hotspot h2">2</span>
+      <span class="hotspot h3">3</span>
+      <span class="hotspot h4">4</span>
+      <span class="hotspot h5">5</span>
+      <span class="hotspot h6">6</span>
+      <span class="hotspot h7">7</span>
+    </div>
+
+    <div class="inspect-cards">
+      <article class="inspect-card"><span class="inspect-num">1</span><div class="inspect-copy"><b>Karoserie a lak</b><p>Měříme tloušťku laku, odhalíme přelakované díly, opravy po nehodě a korozi.</p></div></article>
+      <article class="inspect-card"><span class="inspect-num">2</span><div class="inspect-copy"><b>Motor a převodovka</b><p>Kontrolujeme úniky kapalin, chod motoru, stav převodovky a celkový technický stav.</p></div></article>
+      <article class="inspect-card"><span class="inspect-num">3</span><div class="inspect-copy"><b>Diagnostika</b><p>Čteme chybové kódy, prověřujeme řídicí jednotky a skutečný nájezd kilometrů.</p></div></article>
+      <article class="inspect-card"><span class="inspect-num">4</span><div class="inspect-copy"><b>Pneumatiky a kola</b><p>Kontrolujeme stav a opotřebení pneumatik, disků a případné poškození.</p></div></article>
+      <article class="inspect-card"><span class="inspect-num">5</span><div class="inspect-copy"><b>Podvozek a brzdy</b><p>Kontrolujeme stav podvozku, tlumiče, čepy, brzdy, výfuk a případné vůle.</p></div></article>
+      <article class="inspect-card"><span class="inspect-num">6</span><div class="inspect-copy"><b>Interiér a výbava</b><p>Prověřujeme funkčnost výbavy, stav interiéru, airbagy a celkovou kompletnost vozu.</p></div></article>
+      <article class="inspect-card"><span class="inspect-num">7</span><div class="inspect-copy"><b>Zkušební jízda</b><p>Ověřujeme chování vozu v provozu, řazení, brzdy, řízení a neobvyklé zvuky.</p></div></article>
+    </div>
+  </div>
 </section>
 <section id="proc" class="light"><div class="container why"><div><p class="eyebrow">PROČ NECHAT AUTO ZKONTROLOVAT?</p><h2>JEDNO ŠPATNÉ AUTO<br>MŮŽE STÁT <span>STATISÍCE.</span></h2><p>Cílem není auto za každou cenu shodit. Cílem je, abyste přesně věděli, co kupujete.</p></div><div class="risk">
 <article><i>🚗</i><b>Skrytá nehoda</b><span>Opravy nebo poškození, které nejsou v inzerátu přiznané.</span></article>
