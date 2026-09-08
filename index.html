@@ -169,13 +169,45 @@
 </head><body>
 <header class="topbar"><div class="container nav"><a class="logo" href="#top" aria-label="AutoRozsudek.cz"><img src="assets/logo-autorozsudek-approved-final.svg" width="315" height="62" alt="AutoRozsudek.cz – Pravda má hodnotu"></a><nav><a href="#top">Domů</a><a href="#jak">Jak to funguje</a><a href="#kontrolujeme">Co kontrolujeme</a><a href="#proc">Proč kontrola</a><a href="#reference">Reference</a><a href="#onas">O nás</a><a href="#kontakt">Kontakt</a></nav><a class="btn small" href="#kontakt">Objednat kontrolu</a></div></header>
 <main id="top"><section class="hero"><div class="container hero-grid"><div><p class="eyebrow">NEZÁVISLÁ KONTROLA OJETÝCH VOZŮ</p><h1>NEKUPUJTE AUTO<br><span>NASLEPO.</span></h1><h2>Nechte nad ním vynést <strong>rozsudek.</strong></h2><p class="lead">Prověříme ojetý vůz před koupí a řekneme vám, co prodávající možná neřekl. Nezávisle. Objektivně. Srozumitelně.</p><div class="actions"><a class="btn" href="#kontakt">Chci prověřit auto →</a><a class="btn outline" href="#jak">Jak kontrola probíhá</a></div><div class="benefits"><div><b>Nezávisle</b><span>bez vazby na prodejce</span></div><div><b>Srozumitelně</b><span>jasný výstup z kontroly</span></div><div><b>České Budějovice a okolí</b><span>přijedeme za vozem</span></div></div></div><div class="hero-photo"><img src="assets/hero-final.jpg" alt="Technik při kontrole vozu"><div class="handwritten">Lepší znát pravdu<br>než litovat nákupu.</div></div></div></section>
-<section id="kontrolujeme" class="inspect-section">
-  <div style="width:100%;margin:0;padding:0;background:#05080c;">
-    <img src="assets/co-kontrolujeme-schvaleno.png"
-         alt="Co kontrolujeme při prověření ojetého vozu"
-         style="display:block;width:100%;height:auto;margin:0;padding:0;">
+<section id="kontrolujeme" class="inspect-section" style="margin:0;padding:0;background:#05080c;">
+  <div class="kontrolujeme-desktop-fit">
+    <img src="assets/co-kontrolujeme-desktop-fit.png"
+         alt="Co kontrolujeme při prověření ojetého vozu">
   </div>
 </section>
+<style>
+@media (min-width: 769px) {
+  #kontrolujeme .kontrolujeme-desktop-fit {
+    width: 100%;
+    height: calc(100vh - 92px);
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #05080c;
+    padding: 10px 18px;
+    box-sizing: border-box;
+  }
+  #kontrolujeme .kontrolujeme-desktop-fit img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 768px) {
+  #kontrolujeme .kontrolujeme-desktop-fit img {
+    display:block;
+    width:100%;
+    height:auto;
+    margin:0;
+  }
+}
+</style>
 <section id="proc" class="light"><div class="container why"><div><p class="eyebrow">PROČ NECHAT AUTO ZKONTROLOVAT?</p><h2>JEDNO ŠPATNÉ AUTO<br>MŮŽE STÁT <span>STATISÍCE.</span></h2><p>Cílem není auto za každou cenu shodit. Cílem je, abyste přesně věděli, co kupujete.</p></div><div class="risk">
 <article><i>🚗</i><b>Skrytá nehoda</b><span>Opravy nebo poškození, které nejsou v inzerátu přiznané.</span></article>
 <article><i>🔧</i><b>Blížící se drahý servis</b><span>Opotřebení, které může krátce po koupi znamenat vysoké náklady.</span></article>
