@@ -1,0 +1,23 @@
+const STORAGE_KEY='autorozsudek-kontrola-v1';
+const sections=[
+ ['body','Karoserie a lak'],['wheels','Kola a pneumatiky'],['brakes','Brzdy'],['engine','Motorový prostor a motor'],['underbody','Podvozek, nápravy a řízení'],['interior','Interiér a výbava'],['documents','Dokumentace a historie'],['diagnostics','Diagnostika'],['drive','Zkušební jízda'],['investments','Doporučený servis a investice']
+];
+const allNav=[['vehicle','Vozidlo a zakázka'],['photos','Fotografie vozu'],...sections,['final','Finální rozsudek']];
+let state=load();
+function load(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||{}}catch{return {}}}
+function get(path){return path.split('.').reduce((o,k)=>o?.[k],state)}
+function set(path,value){const keys=path.split('.');let o=state;keys.slice(0,-1).forEach(k=>o=o[k]??=( {}));o[keys.at(-1)]=value;save()}
+let saveTimer;
+function save(){document.querySelector('#saveState').textContent='Ukládám…';clearTimeout(saveTimer);saveTimer=setTimeout(()=>{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));document.querySelector('#saveState').textContent='Uloženo v zařízení'},220)}
+function nav(){document.querySelector('#sectionNav').innerHTML=allNav.map((s,i)=>`<a href="#${s[0]}"><span class="nav-num">${String(i+1).padStart(2,'0')}</span>${s[1]}</a>`).join('')}
+function statusButtons(path){const opts=[['V POŘÁDKU','ok'],['VÝHRADA','warn'],['ZÁVADA / RIZIKO','bad'],['NEOVĚŘENO','unknown'],['NERELEVANTNÍ','na']];return `<div class="status-row" data-choice="${path}">${opts.map(([v,c])=>`<button type="button" class="${c}" data-value="${v}">${v}</button>`).join('')}</div>`}
+function sectionHtml([id,title],idx){return `<section class="card" id="${id}"><div class="section-heading"><div><span class="step">${String(idx+3).padStart(2,'0')}</span><h2>${title}</h2></div></div><div class="finding"><div class="finding-title"><h3>Celkový stav oblasti</h3></div>${statusButtons(`sections.${id}.status`)}<label>Nálezy a poznámky<textarea data-field="sections.${id}.note" rows="4" placeholder="Zapište nebo nadiktujte konkrétní zjištění…"></textarea></label><label>Doporučení / co prověřit dále<textarea data-field="sections.${id}.recommendation" rows="2" placeholder="Volitelné…"></textarea></label></div></section>`}
+function render(){nav();document.querySelector('#dynamicSections').innerHTML=sections.map(sectionHtml).join('');bindFields();restoreChoices();document.querySelector('#inspectionId').textContent=state.meta?.id||makeId()}
+function makeId(){const d=new Date();const id=`AR-${d.getFullYear()}-00001`;set('meta.id',id);return id}
+function bindFields(){document.querySelectorAll('[data-field]').forEach(el=>{const path=el.dataset.field;if(el.matches('input,textarea,select')){el.value=get(path)??'';el.addEventListener('input',()=>set(path,el.value))}});document.querySelectorAll('[data-choice] button').forEach(btn=>btn.addEventListener('click',()=>{const row=btn.closest('[data-choice]');set(row.dataset.choice,btn.dataset.value);row.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b===btn))}));document.querySelectorAll('.verdict-picker button').forEach(btn=>btn.addEventListener('click',()=>{set('final.verdict',btn.dataset.value);document.querySelectorAll('.verdict-picker button').forEach(b=>b.classList.toggle('active',b===btn))}))}
+function restoreChoices(){document.querySelectorAll('[data-choice]').forEach(row=>{const v=get(row.dataset.choice);row.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.value===v))});const verdict=get('final.verdict');document.querySelectorAll('.verdict-picker button').forEach(b=>b.classList.toggle('active',b.dataset.value===verdict))}
+document.querySelector('#photoInput').addEventListener('change',e=>{const names=[...e.target.files].map(f=>f.name);set('photos.names',names);document.querySelector('#photoList').innerHTML=names.map(n=>`<span class="photo-pill">${escapeHtml(n)}</span>`).join('')});
+function escapeHtml(s){return s.replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+document.querySelector('#resetBtn').addEventListener('click',()=>{if(confirm('Opravdu vymazat celý lokálně uložený koncept této kontroly?')){localStorage.removeItem(STORAGE_KEY);location.reload()}});
+render();
+const savedPhotos=get('photos.names')||[];document.querySelector('#photoList').innerHTML=savedPhotos.map(n=>`<span class="photo-pill">${escapeHtml(n)}</span>`).join('');
