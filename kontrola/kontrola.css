@@ -14,3 +14,11 @@ label{display:flex!important}input,textarea,select{display:block!important;backg
 .status-row{display:grid!important}.check-point{display:block!important;background:#0b0d10!important;border:1px solid var(--line)!important}.subhead{display:flex!important;background:#17191e!important}.paint-grid,.wheel-grid{display:grid!important}.paint-part,.wheel{display:block!important;background:#0b0d10!important;border:1px solid var(--line)!important}
 .finding-media{display:flex!important}.photo-list,.media-files{display:flex!important}.verdict-picker{display:grid!important}.total-box,.final-auto{display:flex!important}
 @media(max-width:900px){.app-shell{grid-template-columns:1fr!important}.cols-3,.cols-2,.paint-grid,.wheel-grid{grid-template-columns:1fr!important}.status-row{grid-template-columns:repeat(2,1fr)!important}.verdict-picker{grid-template-columns:1fr!important}}
+
+/* 3B – technický půdorys karoserie podle referenčního schématu */
+.body-map-wrap{max-width:780px}
+.body-map.blueprint{max-height:none;aspect-ratio:760/420}
+.blueprint .bp-car path,.blueprint .bp-car rect{vector-effect:non-scaling-stroke}
+.blueprint .bp-bumper,.blueprint .bp-hood,.blueprint .bp-roof,.blueprint .bp-trunk,.blueprint .bp-fender,.blueprint .bp-quarter,.blueprint .bp-door{fill:#171b20;stroke:#a1a8b0;stroke-width:2.2}
+.blueprint .bp-roof{fill:#20252b}.blueprint .bp-glass{fill:#303741;stroke:#8d959e;stroke-width:2}.blueprint .bp-roof-center{fill:#1d2228;stroke:#7b838d;stroke-width:1.8}.blueprint .bp-divider{fill:none;stroke:#777f89;stroke-width:1.8}.blueprint .bp-mirror{fill:#22272d;stroke:#a1a8b0;stroke-width:2}.blueprint .bp-wheels rect{fill:#0a0c0f;stroke:#8d959e;stroke-width:2}.blueprint .bp-light{fill:#292f36;stroke:#b1b7be;stroke-width:1.8}.blueprint .bp-marker circle{fill:#e1262f;stroke:#ff6a70;stroke-width:1.2}.blueprint .bp-marker text{fill:#fff;font-size:11px;font-weight:800;text-anchor:middle}
+@media(max-width:900px){.body-map-wrap{max-width:100%}.body-map.blueprint{max-height:none}}
