@@ -4,3 +4,13 @@
 @media(max-width:900px){.body-map-wrap{max-width:360px}.body-map{max-height:340px}}
 
 .body-map .hood-line,.body-map .trunk-line{fill:#1b1f25;stroke:#555d67;stroke-width:2}.body-map .roof-shape{fill:url(#bodyShade);stroke:#68707a;stroke-width:2.5}.body-map .mirror{fill:#20252b;stroke:#68707a;stroke-width:2}.body-map .wheel-mark{fill:none;stroke:#858c96;stroke-width:8;stroke-linecap:round}.body-map .panel-line{stroke:#4a515b;stroke-width:2}.body-map .car-glass{fill:#303741;stroke:#707985;stroke-width:2}
+
+/* HOTFIX: restore native form rendering after preview CSS corruption */
+body{background:var(--bg)!important;color:var(--text)!important}
+.app-shell{display:grid!important}.content{display:block!important}.card{display:block!important;background:linear-gradient(180deg,#121419,#0e1014)!important;border:1px solid var(--line)!important;border-radius:16px!important;padding:24px!important;margin:0 0 22px!important}
+.section-heading{display:flex!important}.grid{display:grid!important}.cols-3{grid-template-columns:repeat(3,1fr)!important}.cols-2{grid-template-columns:repeat(2,1fr)!important}
+label{display:flex!important}input,textarea,select{display:block!important;background:#090b0e!important;color:#fff!important;border:1px solid #30343d!important}
+.upload-box{display:grid!important;background:#0a0c0f!important;border:1px dashed #424752!important}.upload-box input,.mini-upload input{display:none!important}
+.status-row{display:grid!important}.check-point{display:block!important;background:#0b0d10!important;border:1px solid var(--line)!important}.subhead{display:flex!important;background:#17191e!important}.paint-grid,.wheel-grid{display:grid!important}.paint-part,.wheel{display:block!important;background:#0b0d10!important;border:1px solid var(--line)!important}
+.finding-media{display:flex!important}.photo-list,.media-files{display:flex!important}.verdict-picker{display:grid!important}.total-box,.final-auto{display:flex!important}
+@media(max-width:900px){.app-shell{grid-template-columns:1fr!important}.cols-3,.cols-2,.paint-grid,.wheel-grid{grid-template-columns:1fr!important}.status-row{grid-template-columns:repeat(2,1fr)!important}.verdict-picker{grid-template-columns:1fr!important}}
