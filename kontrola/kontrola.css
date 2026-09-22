@@ -103,3 +103,25 @@ label{display:flex!important}input,textarea,select{display:block!important;backg
   max-height:none;
   object-fit:contain;
 }
+
+
+/* 3B – ostré HTML vysvětlivky nad schváleným PNG; auto a body zůstávají beze změny */
+.sharp-map-shell{position:relative}
+.sharp-map-legend{
+ position:absolute;right:1.55%;top:8.4%;width:22.1%;height:83%;
+ box-sizing:border-box;padding:0.7% 1.05%;
+ background:#090b0e;border:1px solid #2a2e34;border-radius:8px;
+ display:flex;flex-direction:column;z-index:2;overflow:hidden
+}
+.sharp-map-row{display:flex;align-items:center;gap:8px;flex:1;min-height:0;border-bottom:1px solid #25282d;color:#f4f4f4;font-size:clamp(9px,1.02vw,15px);line-height:1.05}
+.sharp-map-row:last-of-type{border-bottom:0}
+.sharp-map-row b{display:grid;place-items:center;flex:0 0 clamp(22px,2.2vw,32px);width:clamp(22px,2.2vw,32px);height:clamp(22px,2.2vw,32px);border-radius:50%;background:#f01824;color:#fff;font-size:clamp(11px,1.1vw,16px)}
+.sharp-map-row span{font-weight:650;white-space:nowrap}
+.sharp-map-row small{display:block;margin-top:2px;color:#c8c9cc;font-size:.78em;font-weight:500}
+.sharp-map-note{margin-top:6px;padding:7px 8px;border:1px solid #2a2e34;border-radius:6px;color:#bfc2c7;font-size:clamp(7px,.68vw,10px);line-height:1.25}
+@media(max-width:760px){
+ .sharp-map-legend{right:1.2%;top:7.5%;width:23.2%;padding:.5% .7%}
+ .sharp-map-row{gap:4px;font-size:clamp(6px,1.65vw,9px)}
+ .sharp-map-row b{flex-basis:18px;width:18px;height:18px;font-size:9px}
+ .sharp-map-note{font-size:5.5px;padding:4px}
+}
