@@ -30,3 +30,27 @@ label{display:flex!important}input,textarea,select{display:block!important;backg
 .dictate-btn:hover{border-color:#858c97;background:#181d23}
 .dictate-btn.listening{border-color:#e1262f;color:#fff;background:#481b20}
 @media(max-width:900px){.final-summary-grid{grid-template-columns:1fr}}
+
+
+/* 3B – schválená orientační mapa: zachovat původní vertikální poměr, pouze skrýt spodní logo */
+.body-map-wrap{
+  width:min(100%,780px);
+  max-width:780px;
+  margin:0 auto 18px;
+  padding:16px;
+}
+.body-map-crop{
+  width:100%;
+  aspect-ratio:1024/1385;
+  overflow:hidden;
+  background:#050607;
+}
+.body-map.body-map-approved{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:none;
+}
+@media (max-width:700px){
+  .body-map-wrap{width:100%;max-width:100%;padding:10px}
+}
