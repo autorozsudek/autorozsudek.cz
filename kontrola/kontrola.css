@@ -83,3 +83,23 @@ label{display:flex!important}input,textarea,select{display:block!important;backg
   .body-map-legend{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
   .body-map-note{grid-column:1/-1}
 }
+
+
+/* 3B – finální schválený horizontální obrázek 1:1, bez CSS otáčení a bez doplňkové legendy */
+.body-map-approved-final{
+  width:min(100%,980px);
+  max-width:980px;
+  margin:0 auto 18px;
+  padding:0;
+  overflow:hidden;
+  background:transparent;
+  border:0;
+}
+.body-map-approved-final-img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:100%;
+  max-height:none;
+  object-fit:contain;
+}
