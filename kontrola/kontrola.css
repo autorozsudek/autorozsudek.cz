@@ -22,3 +22,11 @@ label{display:flex!important}input,textarea,select{display:block!important;backg
 .blueprint .bp-bumper,.blueprint .bp-hood,.blueprint .bp-roof,.blueprint .bp-trunk,.blueprint .bp-fender,.blueprint .bp-quarter,.blueprint .bp-door{fill:#171b20;stroke:#a1a8b0;stroke-width:2.2}
 .blueprint .bp-roof{fill:#20252b}.blueprint .bp-glass{fill:#303741;stroke:#8d959e;stroke-width:2}.blueprint .bp-roof-center{fill:#1d2228;stroke:#7b838d;stroke-width:1.8}.blueprint .bp-divider{fill:none;stroke:#777f89;stroke-width:1.8}.blueprint .bp-mirror{fill:#22272d;stroke:#a1a8b0;stroke-width:2}.blueprint .bp-wheels rect{fill:#0a0c0f;stroke:#8d959e;stroke-width:2}.blueprint .bp-light{fill:#292f36;stroke:#b1b7be;stroke-width:1.8}.blueprint .bp-marker circle{fill:#e1262f;stroke:#ff6a70;stroke-width:1.2}.blueprint .bp-marker text{fill:#fff;font-size:11px;font-weight:800;text-anchor:middle}
 @media(max-width:900px){.body-map-wrap{max-width:100%}.body-map.blueprint{max-height:none}}
+
+/* Schválené dokončení workflow 1–13 */
+.final-summary-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:18px}
+.final-summary-grid .final-auto{margin:0}
+.dictate-btn{align-self:flex-start;border:1px dashed #515762;background:#11151a;color:#d6dae0;border-radius:8px;padding:8px 11px;font-weight:750;font-size:11px;cursor:pointer;margin-top:-5px}
+.dictate-btn:hover{border-color:#858c97;background:#181d23}
+.dictate-btn.listening{border-color:#e1262f;color:#fff;background:#481b20}
+@media(max-width:900px){.final-summary-grid{grid-template-columns:1fr}}
