@@ -49,15 +49,65 @@ function addDictationButtons(){
   document.querySelectorAll('textarea[data-field]').forEach(area=>{
     if(area.parentElement.querySelector('.dictate-btn'))return;
     const b=document.createElement('button');b.type='button';b.className='dictate-btn';b.innerHTML='🎙 Diktovat';b.setAttribute('aria-label','Diktovat text');
+
+    const reset=()=>{b.classList.remove('listening');b.innerHTML='🎙 Diktovat'};
+    const insertText=text=>{
+      const spoken=String(text||'').trim();
+      if(!spoken)return;
+      const start=area.selectionStart??area.value.length;
+      const end=area.selectionEnd??area.value.length;
+      const before=area.value.slice(0,start);
+      const after=area.value.slice(end);
+      const lead=before && !/\\s$/.test(before)?' ':'';
+      area.value=before+lead+spoken+after;
+      area.selectionStart=area.selectionEnd=(before+lead+spoken).length;
+      area.dispatchEvent(new Event('input',{bubbles:true}));
+      area.dispatchEvent(new Event('change',{bubbles:true}));
+      area.focus();
+    };
+
     b.onclick=()=>{
       const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-      if(!SR){alert('Přímé diktování není v tomto prohlížeči dostupné. Použijte diktování systémové klávesnice zařízení.');return}
-      const r=new SR();r.lang='cs-CZ';r.interimResults=false;r.continuous=false;
+      if(!SR){
+        area.focus();
+        alert('Tento prohlížeč neposkytuje webu přímé rozpoznávání řeči. Kurzor je připraven v poznámce – použijte mikrofon/diktování klávesnice zařízení.');
+        return;
+      }
+
+      let gotResult=false;
+      let r;
+      try{
+        r=new SR();
+        r.lang='cs-CZ';
+        r.interimResults=true;
+        r.continuous=false;
+        r.maxAlternatives=1;
+      }catch(e){
+        area.focus();
+        alert('Diktování se v tomto prohlížeči nepodařilo spustit. Použijte mikrofon/diktování klávesnice zařízení.');
+        return;
+      }
+
       b.classList.add('listening');b.textContent='● Poslouchám…';
-      r.onresult=e=>{const spoken=[...e.results].map(x=>x[0].transcript).join(' ');area.value=(area.value.trim()?area.value.trim()+' ':'')+spoken;area.dispatchEvent(new Event('input',{bubbles:true}))};
-      r.onerror=()=>{b.classList.remove('listening');b.innerHTML='🎙 Diktovat'};
-      r.onend=()=>{b.classList.remove('listening');b.innerHTML='🎙 Diktovat'};
-      r.start();
+      r.onresult=e=>{
+        let finalText='';
+        for(let i=e.resultIndex;i<e.results.length;i++){
+          if(e.results[i].isFinal)finalText+=e.results[i][0].transcript+' ';
+        }
+        if(finalText.trim()){gotResult=true;insertText(finalText)}
+      };
+      r.onerror=e=>{
+        reset();
+        if(e.error==='not-allowed'||e.error==='service-not-allowed'){
+          area.focus();
+          alert('Pro diktování povolte této stránce přístup k mikrofonu. Pokud prohlížeč rozpoznávání řeči nepodporuje, použijte mikrofon/diktování klávesnice zařízení.');
+        }else if(e.error!=='no-speech'&&e.error!=='aborted'){
+          area.focus();
+          alert('Rozpoznávání řeči se nepodařilo dokončit. Zkuste diktování znovu nebo použijte mikrofon klávesnice zařízení.');
+        }
+      };
+      r.onend=()=>{reset();if(gotResult)area.dispatchEvent(new Event('input',{bubbles:true}))};
+      try{r.start()}catch(e){reset();area.focus();alert('Diktování se nepodařilo spustit. Zkuste jej znovu nebo použijte mikrofon/diktování klávesnice zařízení.')}
     };
     area.insertAdjacentElement('afterend',b);
   });
