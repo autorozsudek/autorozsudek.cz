@@ -1,6 +1,6 @@
 const STORAGE_KEY='autorozsudek-kontrola-v1';
 const STATUS=[['V POŘÁDKU','ok'],['VÝHRADA','warn'],['ZÁVADA / RIZIKO','bad'],['NEOVĚŘENO','unknown'],['NERELEVANTNÍ','na']];
-const navItems=[['vehicle','Vozidlo a zakázka'],['photos','Fotografie vozu'],['body','Karoserie, světla, skla a lak'],['wheels','Kola a pneumatiky'],['brakes','Brzdy'],['engine','Motorový prostor, motor a převodovka'],['underbody','Podvozek a nápravy'],['interior','Interiér a výbava'],['documents','Identifikace, dokumentace a servisní historie'],['diagnostics','Diagnostika'],['drive','Zkušební jízda'],['investments','Doporučený servis a očekávané investice'],['final','Finální rozsudek']];
+const navItems=[['vehicle','Vozidlo a zakázka'],['photos','Fotografie vozu'],['body','Karoserie, světla, skla a lak'],['wheels','Kola a pneumatiky'],['brakes','Brzdy'],['engine','Motorový prostor, motor a převodovka'],['underbody','Podvozek a nápravy'],['interior','Interiér a výbava'],['documents','Identifikace, dokumentace a servisní historie'],['diagnostics','Diagnostika'],['drive','Zkušební jízda'],['video-summary','Video shrnutí kontroly'],['investments','Doporučený servis a očekávané investice'],['final','Finální rozsudek']];
 let state=load();
 function load(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||{}}catch{return {}}}
 function get(p){return p.split('.').reduce((o,k)=>o?.[k],state)}
