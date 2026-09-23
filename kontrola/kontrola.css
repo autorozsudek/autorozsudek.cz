@@ -123,3 +123,11 @@ label{display:flex!important}input,textarea,select{display:block!important;backg
   .body-map-sharp-legend{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
   .body-map-sharp-note{grid-column:1/-1}
 }
+
+
+/* 3B fix: legend must stay inside the right panel; override generic b/span rules */
+.body-map-sharp-legend .body-map-sharp-row{display:grid!important;grid-template-columns:31px minmax(0,1fr)!important;gap:8px!important;align-items:center!important;min-height:30px!important;border-bottom:1px solid #22272e!important}
+.body-map-sharp-legend .body-map-sharp-row>b{display:grid!important;place-items:center!important;position:static!important;float:none!important;width:26px!important;height:26px!important;min-width:26px!important;margin:0!important;padding:0!important;border-radius:50%!important;background:#ef1824!important;color:#fff!important;font-size:13px!important;line-height:1!important}
+.body-map-sharp-legend .body-map-sharp-row>span{display:block!important;position:static!important;float:none!important;width:auto!important;margin:0!important;padding:0!important;color:#f4f5f6!important;font-size:12px!important;font-weight:650!important;line-height:1.08!important}
+.body-map-sharp-legend .body-map-sharp-row>span>small{display:block!important;color:#b7bdc5!important;font-size:10px!important;font-weight:500!important;margin-top:2px!important}
+.body-map-sharp-legend .body-map-sharp-note{display:block!important;position:static!important;float:none!important;width:auto!important}
