@@ -208,3 +208,6 @@ label{display:flex!important}input,textarea,select{display:block!important;backg
 .file-preview-card.document-preview>b{font-size:15px;color:#fff;border:1px solid #454b55;border-radius:7px;padding:9px 8px}
 .file-preview-card.document-preview>span{width:100%;box-sizing:border-box}
 @media(max-width:560px){.file-preview-card{width:104px}.file-preview-card img,.file-preview-card video{height:78px}.file-preview-card .video-badge{top:53px}}
+
+.file-preview-card .file-remove{position:absolute;z-index:3;top:5px;right:5px;width:25px;height:25px;border:1px solid rgba(255,255,255,.32);border-radius:50%;background:rgba(0,0,0,.82);color:#fff;font-size:18px;line-height:20px;font-weight:700;cursor:pointer;padding:0}
+.file-preview-card .file-remove:hover{background:#b51f27;border-color:#e1262f}
