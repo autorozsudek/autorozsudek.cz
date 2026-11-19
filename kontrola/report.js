@@ -55,6 +55,9 @@ const findings={
 const liveDraft=(()=>{try{const raw=sessionStorage.getItem('autorozsudek-report-preview-v1');return raw?JSON.parse(raw):null}catch{return null}})();
 const readPath=(root,path)=>path.split('.').reduce((v,k)=>v?.[k],root);
 if(liveDraft){
+  for(const key of ['vehicle','order','engine','diagnostics','documents','final']){for(const k of Object.keys(sample[key]||{}))sample[key][k]=''}
+  sample.investments.items=[];
+  sample.paint={};
   for(const key of ['vehicle','order','engine','diagnostics','documents','final','investments','paint']){
     if(liveDraft[key]&&typeof liveDraft[key]==='object')Object.assign(sample[key]??={},liveDraft[key]);
   }
@@ -76,7 +79,7 @@ const row=(title,status,note)=>'<div class="result"><div><b>'+safe(title)+'</b>'
 const point=(key,title)=>{const a=findings[key]||['NEOVĚŘENO',''];return row(title,a[0],a[1])};
 const card=(id,num,title,body)=>'<section class="card" id="'+id+'"><h2><span class="num">'+num+'</span>'+safe(title)+'</h2>'+body+'</section>';
 const gallery='<div class="empty-media"><b>Fotografie a videa konkrétního vozu</b><p>V této ukázce nejsou přiloženy skutečné fotografie. V ostrém reportu zde budou nahrané snímky a videa z kontroly.</p></div>';
-const paint=paintParts.map((name,i)=>{const v=sample.paint[i]||{};return '<div class="paint-item"><b>'+(i+1)+'. '+safe(name)+'</b>'+field('MAX µm',v.um? v.um+' µm':'—')+field('Vyhodnocení',v.result||'NEOVĚŘENO')+(v.note?'<p>'+safe(v.note)+'</p>':'')+'</div>'}).join('');
+const paint=paintParts.map((name,i)=>{const v=sample.paint[i]||readPath(liveDraft||{},'paint.'+i)||{};return '<div class="paint-item"><b>'+(i+1)+'. '+safe(name)+'</b>'+field('MAX µm',v.um? v.um+' µm':'—')+field('Vyhodnocení',v.result||'NEOVĚŘENO')+(v.note?'<p>'+safe(v.note)+'</p>':'')+'</div>'}).join('');
 const wheelItems=wheels.map((w,i)=>'<div class="wheel"><h3>'+w+'</h3><div class="fields">'+field('Rozměr pneumatiky','215/55 R17')+field('DOT',i<2?'2524':'1123')+field('Dezén mm',i<2?'5,4':'3,8')+'</div>'+row('Pneumatika',i<2?'V POŘÁDKU':'VÝHRADA',i<2?'Bez významného nálezu.':'Zohlednit opotřebení.')+row('Disk','V POŘÁDKU','Bez zjevného významného poškození.')+'</div>').join('');
 const brakeItems=wheels.map((w,i)=>'<div class="wheel"><h3>'+w+'</h3>'+row('Brzdový kotouč',i<2?'VÝHRADA':'V POŘÁDKU',i<2?'Viditelné provozní opotřebení.':'Bez významného viditelného nálezu.')+row('Brzdová destička',i<2?'VÝHRADA':'V POŘÁDKU',i<2?'Doporučeno ověřit zbývající tloušťku.':'Bez významného viditelného nálezu.')+row('Třmen – pouze viditelná abnormalita','NEOVĚŘENO','Bez samostatně doloženého nálezu.')+'</div>').join('');
 const sectionsHtml=[
@@ -95,5 +98,11 @@ card('video-summary',12,'Video shrnutí kontroly','<p class="muted">Video techni
 card('investments',13,'Doporučený servis a očekávané investice',sample.investments.items.map(x=>'<div class="investment"><div><b>'+safe(x.title)+'</b><p>'+safe(x.note)+'</p></div><strong>'+money(x.min)+' – '+money(x.max)+'</strong></div>').join('')+'<div class="total">OČEKÁVANÉ INVESTICE CELKEM <strong>13 000 – 29 000 Kč</strong></div>'),
 card('final',14,'Finální rozsudek','<div class="fields">'+field('Požadovaná cena prodávajícího',money(sample.order.askingPrice))+field('Očekávané investice','13 000 – 29 000 Kč')+'</div><div class="verdict">'+safe(sample.final.verdict)+'</div><h3>Celkové hodnocení technika</h3><p>'+safe(sample.final.summary)+'</p>'+field('Posouzení požadované ceny',sample.final.priceAssessment)+field('Komentář k ceně',sample.final.priceComment)+'<div class="signature">Kontrolu provedl: <strong>Lukáš Stehlík · AutoRozsudek.cz</strong></div>')
 ];
+if(liveDraft){
+ const intro=document.querySelector('.intro');
+ if(intro)intro.querySelector('p').textContent='Lokální náhled z vyplněné kontroly. Zatím nejde o odeslaný ani bezpečně sdílený report; fotografie a videa nejsou přeneseny.';
+ const title=document.querySelector('.top span');if(title)title.textContent='LOKÁLNÍ NÁHLED REPORTU';
+ const navtitle=document.querySelector('.navtitle strong');if(navtitle)navtitle.textContent=safe(liveDraft.meta?.id||'KONTROLA');
+}
 document.getElementById('nav').innerHTML=sections.map(([id,title],i)=>'<a href="#'+id+'"><span>'+(i+1)+'</span>'+safe(title)+'</a>').join('');
 document.getElementById('report').innerHTML=sectionsHtml.join('');
