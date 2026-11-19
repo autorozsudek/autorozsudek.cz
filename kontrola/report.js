@@ -50,6 +50,22 @@ const findings={
  'drive.drivetrain':['V POŘÁDKU','Bez zjevné abnormality.'],
  'drive.assist':['NEOVĚŘENO','Ne všechny asistenty bylo možné ověřit.']
 };
+
+// Lokální náhled skutečně vyplněné kontroly; bez serverového uložení či sdílení.
+const liveDraft=(()=>{try{const raw=sessionStorage.getItem('autorozsudek-report-preview-v1');return raw?JSON.parse(raw):null}catch{return null}})();
+const readPath=(root,path)=>path.split('.').reduce((v,k)=>v?.[k],root);
+if(liveDraft){
+  for(const key of ['vehicle','order','engine','diagnostics','documents','final','investments','paint']){
+    if(liveDraft[key]&&typeof liveDraft[key]==='object')Object.assign(sample[key]??={},liveDraft[key]);
+  }
+  for(const key of Object.keys(findings)){
+    const entry=readPath(liveDraft,'sections.'+key);
+    if(entry)findings[key]=[entry.status||'NEOVĚŘENO',entry.note||''];
+    else findings[key]=['NEOVĚŘENO',''];
+  }
+  const photoItems=readPath(liveDraft,'photos.names')||[];
+  if(photoItems.length)document.addEventListener('DOMContentLoaded',()=>{const el=document.querySelector('#photos .empty-media');if(el)el.innerHTML='<b>Přiložené soubory (náhledy zatím nejsou dostupné)</b><p>'+photoItems.map(v=>safe(v.name||v)).join(', ')+'</p>'});
+}
 const paintParts=['Přední nárazník','Kapota','LP blatník','LP dveře','LZ dveře','LZ blatník','Víko kufru','Zadní nárazník','PZ blatník','PZ dveře','PP dveře','PP blatník','L sloupek','P sloupek','Střecha'];
 const wheels=['LP','PP','LZ','PZ'];
 const money=n=>new Intl.NumberFormat('cs-CZ').format(Number(n)||0)+' Kč';
