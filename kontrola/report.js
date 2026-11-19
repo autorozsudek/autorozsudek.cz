@@ -50,7 +50,7 @@ const findings={
  'drive.drivetrain':['V POŘÁDKU','Bez zjevné abnormality.'],
  'drive.assist':['NEOVĚŘENO','Ne všechny asistenty bylo možné ověřit.']
 };
-const paintParts=['Přední nárazník','Kapota','LP blatník','LP dveře','LZ dveře','LZ blatník','Víko kufru','Zadní nárazník','PZ blatník','PZ dveře','PP dveře','PP blatník','Střecha'];
+const paintParts=['Přední nárazník','Kapota','LP blatník','LP dveře','LZ dveře','LZ blatník','Víko kufru','Zadní nárazník','PZ blatník','PZ dveře','PP dveře','PP blatník','L sloupek','P sloupek','Střecha'];
 const wheels=['LP','PP','LZ','PZ'];
 const money=n=>new Intl.NumberFormat('cs-CZ').format(Number(n)||0)+' Kč';
 const safe=v=>String(v??'—').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
