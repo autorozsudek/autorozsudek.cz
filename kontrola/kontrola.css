@@ -220,3 +220,11 @@ label{display:flex!important}input,textarea,select{display:block!important;backg
 .paint-map-marker-13{left:33.2%;top:34.2%}
 .paint-map-marker-14{left:33.2%;top:69.2%}
 .paint-map-marker-15{left:32.15%;top:49.1%}
+
+/* OPRAVA 3B: značky a originální obrázek mají shodné souřadnice, bez object-fit:cover. */
+.body-map-approved-car .paint-map-image{position:relative!important;width:128.5%!important;max-width:none!important;line-height:0!important}
+.body-map-approved-car .paint-map-image .body-map-approved-final-img{display:block!important;width:100%!important;height:auto!important;max-width:none!important;max-height:none!important;object-fit:fill!important;object-position:initial!important}
+.body-map-approved-car .paint-map-marker{width:2.9%!important;font-size:clamp(7px,1.35vw,17px)!important}
+.paint-map-marker-13{left:33.25%!important;top:33.95%!important}
+.paint-map-marker-14{left:33.25%!important;top:66.05%!important}
+.paint-map-marker-15{left:32.14%!important;top:49%!important}
