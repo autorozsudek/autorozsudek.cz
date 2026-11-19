@@ -67,7 +67,7 @@ if(liveDraft){
     else findings[key]=['NEOVĚŘENO',''];
   }
   const photoItems=readPath(liveDraft,'photos.names')||[];
-  if(photoItems.length)document.addEventListener('DOMContentLoaded',()=>{const el=document.querySelector('#photos .empty-media');if(el)el.innerHTML='<b>Přiložené soubory (náhledy zatím nejsou dostupné)</b><p>'+photoItems.map(v=>safe(v.name||v)).join(', ')+'</p>'});
+  
 }
 const paintParts=['Přední nárazník','Kapota','LP blatník','LP dveře','LZ dveře','LZ blatník','Víko kufru','Zadní nárazník','PZ blatník','PZ dveře','PP dveře','PP blatník','L sloupek','P sloupek','Střecha'];
 const wheels=['LP','PP','LZ','PZ'];
@@ -112,9 +112,37 @@ if(liveDraft){
  walk(liveDraft,'');
  if(extras.length){const target=sectionsHtml.findIndex(x=>x.includes('id="vehicle"'));if(target>=0)sectionsHtml[target]=sectionsHtml[target].replace('</section>','<h3>Další zaznamenané údaje</h3><div class="fields">'+extras.join('')+'</div></section>');}
  const intro=document.querySelector('.intro');
- if(intro)intro.querySelector('p').textContent='Lokální náhled z vyplněné kontroly. Zatím nejde o odeslaný ani bezpečně sdílený report; fotografie a videa nejsou přeneseny.';
+ if(intro)intro.querySelector('p').textContent='Lokální náhled z vyplněné kontroly. Zatím nejde o odeslaný ani bezpečně sdílený report; fotografie a videa jsou dostupné jen v tomto prohlížeči, pokud jsou stále uložené.';
  const title=document.querySelector('.top span');if(title)title.textContent='LOKÁLNÍ NÁHLED REPORTU';
  const navtitle=document.querySelector('.navtitle strong');if(navtitle)navtitle.textContent=safe(liveDraft.meta?.id||'KONTROLA');
 }
 document.getElementById('nav').innerHTML=sections.map(([id,title],i)=>'<a href="#'+id+'"><span>'+(i+1)+'</span>'+safe(title)+'</a>').join('');
 document.getElementById('report').innerHTML=sectionsHtml.join('');
+
+if(liveDraft){
+ const renderAttachments=async()=>{
+  const requests=[];
+  const walk=(v,p)=>{if(!v||typeof v!=='object')return;if(Array.isArray(v)){if(v.length&&v.every(x=>x&&typeof x==='object'&&'name'in x)){requests.push({path:p,items:v});return;}v.forEach((x,i)=>walk(x,p+'.'+i));return;}for(const [k,x]of Object.entries(v))walk(x,p?p+'.'+k:k)};
+  walk(liveDraft,'');
+  let db=null;try{db=await new Promise((resolve,reject)=>{const q=indexedDB.open('autorozsudek-preview-media',1);q.onupgradeneeded=()=>q.result.createObjectStore('files');q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)})}catch(e){}
+  const sectionFor=path=>path.startsWith('paint.')||path.startsWith('sections.body.')?'body':path.startsWith('wheels.')?'wheels':path.startsWith('brakes.')?'brakes':path.startsWith('sections.')?path.split('.')[1]:path.startsWith('documents.')?'documents':path.startsWith('diagnostics.')?'diagnostics':path.startsWith('videoSummary.')?'video-summary':'photos';
+  for(const req of requests){
+   const section=document.getElementById(sectionFor(req.path));if(!section)continue;
+   const group=document.createElement('div');group.className='empty-media';group.style.marginTop='12px';
+   const title=document.createElement('b');title.textContent='Přílohy: '+req.path;group.append(title);
+   for(let i=0;i<req.items.length;i++){
+    const item=req.items[i];let file=null;
+    if(db)try{file=await new Promise((resolve,reject)=>{const tx=db.transaction('files','readonly');const q=tx.objectStore('files').get(req.path+'::'+i);q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)})}catch(e){}
+    const wrap=document.createElement('div');wrap.style.margin='10px 0';
+    const caption=document.createElement('div');caption.textContent=item.name||'Příloha';wrap.append(caption);
+    if(file){const url=URL.createObjectURL(file);let el;if(file.type.startsWith('image/')){el=document.createElement('img');el.style.cssText='max-width:100%;max-height:360px;border-radius:8px';el.alt=item.name||'Fotografie'}else if(file.type.startsWith('video/')){el=document.createElement('video');el.controls=true;el.style.cssText='max-width:100%;max-height:360px'}else{el=document.createElement('a');el.textContent='Otevřít přílohu';el.download=item.name||'soubor'}el.src=url;if(el.tagName==='A')el.href=url;wrap.append(el)}
+    else{const note=document.createElement('small');note.textContent='Soubor není v tomto prohlížeči dostupný.';wrap.append(note)}
+    group.append(wrap);
+   }
+   section.append(group);
+  }
+  if(db)db.close();
+  for(const id of ['photos','documents','diagnostics','video-summary']){const el=document.querySelector('#'+id+' .empty-media');if(el&&el.textContent.includes('V této ukázce')||el&&el.textContent.includes('V ostrém reportu')||el&&el.textContent.includes('V ukázce není video'))el.remove()}
+ };
+ renderAttachments();
+}
