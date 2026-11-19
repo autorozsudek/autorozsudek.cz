@@ -12,3 +12,17 @@
 .paint-map-marker-13{left:33.25%!important;top:33.95%!important}
 .paint-map-marker-14{left:33.25%!important;top:66.05%!important}
 .paint-map-marker-15{left:32.14%!important;top:49%!important}
+
+
+/* 3B – jediný schválený obrázek, bez ořezu a bez duplicitní legendy. */
+.paint-map-v2{position:relative;width:100%;max-width:1173px;aspect-ratio:1173/545;margin:0 auto 18px;overflow:hidden;container-type:inline-size;line-height:0;background:#050607}
+.paint-map-v2>img{display:block;width:100%;height:100%;object-fit:fill}
+.paint-map-v2-number{position:absolute;z-index:2;display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);width:2.9%;aspect-ratio:1;border-radius:50%;background:#f50016;color:white;font:700 1.62cqw/1 Arial,sans-serif;line-height:1}
+.paint-map-v2-13{left:33.25%;top:33.95%}
+.paint-map-v2-14{left:33.25%;top:69.2%}
+.paint-map-v2-15{left:32.14%;top:49%}
+.paint-map-v2-legend{position:absolute;z-index:3;left:76.68%;top:6.6%;width:23.2%;height:78.4%;background:#080c10;border:1px solid #29333e;border-radius:5px;display:grid;grid-template-rows:repeat(15,minmax(0,1fr));padding:0 .8cqw;box-sizing:border-box}
+.paint-map-legend-row{display:flex;align-items:center;gap:.75cqw;min-width:0;border-bottom:1px solid #29313b;line-height:1}
+.paint-map-legend-row:last-child{border-bottom:0}
+.paint-map-legend-row>b{display:flex;flex:0 0 2.35cqw;align-items:center;justify-content:center;width:2.35cqw;height:2.35cqw;border-radius:50%;background:#f50016;color:white;font:700 1.35cqw/1 Arial,sans-serif}
+.paint-map-legend-row>span{min-width:0;color:#f0f2f4;font:400 1.07cqw/1.05 Arial,sans-serif;overflow-wrap:anywhere}
